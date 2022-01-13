@@ -8,14 +8,16 @@ public class Main {
         final var errorCheckers = List.of(new NaturalNumberChecker());
 
         final var propertyCheckers = List.of(
-                new ParityChecker(),
+                new EvenNumberChecker(),
+                new OddNumberChecker(),
                 new BuzzNumberChecker(),
                 new DuckNumberChecker());
 
         final var number = askNumber(new Scanner(System.in));
         try {
             errorCheckers.forEach(checker -> checker.throwException(number));
-            propertyCheckers.forEach(checker -> checker.apply(number).print());
+            System.out.printf("Properties of %s\n", number);
+            propertyCheckers.forEach(checker -> checker.accept(number));
         } catch (IllegalArgumentException iae) {
             System.out.println(iae.getMessage());
         }

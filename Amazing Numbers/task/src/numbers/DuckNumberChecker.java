@@ -5,7 +5,7 @@ public class DuckNumberChecker extends NumberPropertyChecker {
     private static final String PREFIX = String.format("^%c+", ZERO_CHARACTER);
 
     public DuckNumberChecker() {
-        super("It is %sa Duck number.");
+        super("It is %sa Duck number.", PropertyType.DUCK);
     }
 
     @Override
