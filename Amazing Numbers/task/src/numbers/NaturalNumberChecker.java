@@ -1,15 +1,14 @@
 package numbers;
 
-public class NaturalNumberChecker extends NumberPropertyChecker {
-    private static final String answerText = "This number is %snatural!";
+public class NaturalNumberChecker extends ErrorChecker {
+    private static final String NATURAL_NUMBER_PATTERN = "0*[1-9]\\d+";
+
     public NaturalNumberChecker() {
-        super(true);
+        super("This number is not natural!");
     }
 
     @Override
-    public BaseNumberProperty checkProperty(int n) {
-        final var isNatural = n > 0;
-        return new BaseNumberProperty(n, isNatural,
-                String.format(answerText, isNatural ? "" : "not "));
+    public boolean test(String s) {
+        return s.matches(NATURAL_NUMBER_PATTERN);
     }
 }

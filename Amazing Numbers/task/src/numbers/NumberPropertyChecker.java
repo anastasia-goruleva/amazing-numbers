@@ -1,15 +1,17 @@
 package numbers;
 
-public abstract class NumberPropertyChecker {
-    private final boolean mandatory;
+import java.util.function.Function;
 
-    public NumberPropertyChecker(boolean mandatory) {
-        this.mandatory = mandatory;
+public abstract class NumberPropertyChecker implements Function<String, NumberProperty> {
+    protected static final String NEGATIVE = "not ";
+
+    private final String answerFormat;
+
+    public NumberPropertyChecker(String answerFormat) {
+        this.answerFormat = answerFormat;
     }
 
-    public boolean isMandatory() {
-        return mandatory;
+    public String formAnswer(String s) {
+        return String.format(answerFormat, s);
     }
-
-    public abstract BaseNumberProperty checkProperty(int n);
 }

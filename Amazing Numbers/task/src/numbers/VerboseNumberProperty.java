@@ -3,7 +3,7 @@ package numbers;
 public class VerboseNumberProperty extends NumberProperty {
     private final String explanation;
 
-    public VerboseNumberProperty(int number, boolean isPresent, String answer, String explanation) {
+    public VerboseNumberProperty(String number, boolean isPresent, String answer, String explanation) {
         super(number, isPresent, answer);
         this.explanation = explanation;
     }

@@ -3,8 +3,6 @@ package numbers;
 public class BuzzNumberChecker extends NumberPropertyChecker {
     private static final int MAGIC_NUMBER = 7;
     private static final int DECIMAL_BASE = 10;
-    private static final String answer = "It is %sa Buzz number.";
-    private static final String negative = "not ";
 
     private enum Explanations {
         NOT_BUZZ("is neither divisible by %1$d nor does it end with %1$d."),
@@ -25,13 +23,14 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
     }
 
     public BuzzNumberChecker() {
-        super(false);
+        super("It is %sa Buzz number.");
     }
 
     @Override
-    public BaseNumberProperty checkProperty(int n) {
-        final var endsWith = n % DECIMAL_BASE == MAGIC_NUMBER;
-        final var divisibleBy = n % MAGIC_NUMBER == 0;
+    public NumberProperty apply(String s) {
+        final var number = Integer.parseInt(s);
+        final var endsWith = number % DECIMAL_BASE == MAGIC_NUMBER;
+        final var divisibleBy = number % MAGIC_NUMBER == 0;
         final var isBuzz = endsWith || divisibleBy;
 
         var explanation = Explanations.NOT_BUZZ;
@@ -43,7 +42,7 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
             explanation = Explanations.DIVISIBLE_BY;
         }
 
-        return new VerboseNumberProperty(n, isBuzz, String.format(answer, isBuzz ? "" : negative),
-                explanation.getFullExplanation(n));
+        return new VerboseNumberProperty(s, isBuzz, formAnswer(isBuzz ? "" : NEGATIVE),
+                explanation.getFullExplanation(number));
     }
 }
