@@ -3,7 +3,6 @@ package numbers;
 public class ParityChecker extends NumberPropertyChecker {
     private static final String[] ANSWERS = { "Even", "Odd" };
     private static final String ODD_DIGITS = "13579";
-    private static final int NOT_FOUND = -1;
 
     public ParityChecker() {
         super("This number is %s.");

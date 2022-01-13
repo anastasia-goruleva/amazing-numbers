@@ -9,7 +9,8 @@ public class Main {
 
         final var propertyCheckers = List.of(
                 new ParityChecker(),
-                new BuzzNumberChecker());
+                new BuzzNumberChecker(),
+                new DuckNumberChecker());
 
         final var number = askNumber(new Scanner(System.in));
         try {

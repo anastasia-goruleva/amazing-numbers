@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 public abstract class NumberPropertyChecker implements Function<String, NumberProperty> {
     protected static final String NEGATIVE = "not ";
+    protected static final int NOT_FOUND = -1;
 
     private final String answerFormat;
 
