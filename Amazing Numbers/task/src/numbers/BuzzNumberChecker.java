@@ -17,7 +17,7 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
             this.explanation = explanation;
         }
 
-        public String getFullExplanation(int n) {
+        public String getFullExplanation(long n) {
             return String.format(numberPlaceholder.concat(String.format(explanation, MAGIC_NUMBER)), n);
         }
     }
@@ -33,7 +33,7 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
 
     @Override
     public NumberProperty apply(String s) {
-        final var number = Integer.parseInt(s);
+        final var number = Long.parseLong(s);
         final var endsWith = number % DECIMAL_BASE == MAGIC_NUMBER;
         final var divisibleBy = number % MAGIC_NUMBER == 0;
         final var isBuzz = endsWith || divisibleBy;

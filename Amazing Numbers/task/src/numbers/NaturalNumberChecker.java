@@ -4,7 +4,7 @@ public class NaturalNumberChecker extends ErrorChecker {
     private static final String NATURAL_NUMBER_PATTERN = "0*[1-9]\\d*";
 
     public NaturalNumberChecker() {
-        super("This number is not natural!");
+        super("The first parameter should be a natural number or zero.");
     }
 
     @Override
