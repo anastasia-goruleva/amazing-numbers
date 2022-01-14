@@ -6,7 +6,12 @@ public class OddNumberChecker extends ParityChecker {
     }
 
     @Override
-    protected NumberProperty createNumberProperty(String s, boolean odd, String answer) {
-        return new NumberProperty(s, odd, answer);
+    protected int arrayIndex(boolean yes) {
+        return booleanToInt(yes);
+    }
+
+    @Override
+    public boolean test(String s) {
+        return isOdd(s);
     }
 }

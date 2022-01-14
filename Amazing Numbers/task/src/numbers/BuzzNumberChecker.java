@@ -27,6 +27,11 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
     }
 
     @Override
+    public boolean test(String s) {
+        return false;
+    }
+
+    @Override
     public NumberProperty apply(String s) {
         final var number = Integer.parseInt(s);
         final var endsWith = number % DECIMAL_BASE == MAGIC_NUMBER;
@@ -42,7 +47,6 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
             explanation = Explanations.DIVISIBLE_BY;
         }
 
-        return new VerboseNumberProperty(s, isBuzz, formAnswer(isBuzz ? "" : NEGATIVE),
-                explanation.getFullExplanation(number));
+        return new VerboseNumberProperty(s, isBuzz, formAnswer(isBuzz), explanation.getFullExplanation(number));
     }
 }

@@ -9,8 +9,7 @@ public class DuckNumberChecker extends NumberPropertyChecker {
     }
 
     @Override
-    public NumberProperty apply(String s) {
-        final var isDuck = s.replaceFirst(PREFIX, "").indexOf(ZERO_CHARACTER) != NOT_FOUND;
-        return new NumberProperty(s, isDuck, formAnswer(isDuck ? "" : NEGATIVE));
+    public boolean test(String s) {
+        return s.replaceFirst(PREFIX, "").indexOf(ZERO_CHARACTER) != NOT_FOUND;
     }
 }

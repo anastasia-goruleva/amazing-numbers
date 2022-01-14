@@ -1,10 +1,12 @@
 package numbers;
 
-import java.util.function.Predicate;
-
 public abstract class ParityChecker extends NumberPropertyChecker {
-    private static final String[] ANSWERS = { "Even", "Odd" };
+    private static final String[] ANSWERS = {"Even", "Odd"};
     private static final String ODD_DIGITS = "13579";
+
+    protected static int booleanToInt(boolean yes) {
+        return yes ? 1 : 0;
+    }
 
     public ParityChecker(PropertyType type) {
         super("This number is %s.", type);
@@ -15,11 +17,9 @@ public abstract class ParityChecker extends NumberPropertyChecker {
     }
 
     @Override
-    public NumberProperty apply(String s) {
-        final var yes = isOdd(s);
-        final var answerIndex = yes ? 1 : 0;
-        return createNumberProperty(s, yes, formAnswer(ANSWERS[answerIndex]));
+    protected String formAnswer(boolean yes) {
+        return formAnswer(ANSWERS[arrayIndex(yes)]);
     }
 
-    protected abstract NumberProperty createNumberProperty(String s, boolean yes, String answer);
+    protected abstract int arrayIndex(boolean yes);
 }
