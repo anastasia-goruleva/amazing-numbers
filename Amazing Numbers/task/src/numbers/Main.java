@@ -11,7 +11,8 @@ public class Main {
                 new EvenNumberChecker(),
                 new OddNumberChecker(),
                 new BuzzNumberChecker(),
-                new DuckNumberChecker());
+                new DuckNumberChecker(),
+                new PalindromicNumberChecker());
 
         final var number = askNumber(new Scanner(System.in));
         try {

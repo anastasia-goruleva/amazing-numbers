@@ -4,5 +4,6 @@ public enum PropertyType {
     EVEN,
     ODD,
     BUZZ,
-    DUCK
+    DUCK,
+    PALINDROMIC
 }

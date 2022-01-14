@@ -23,7 +23,7 @@ public class BuzzNumberChecker extends NumberPropertyChecker {
     }
 
     public BuzzNumberChecker() {
-        super("It is %sa Buzz number.", PropertyType.BUZZ);
+        super(PropertyType.BUZZ);
     }
 
     @Override
