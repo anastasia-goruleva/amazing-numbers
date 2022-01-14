@@ -5,5 +5,6 @@ public enum PropertyType {
     ODD,
     BUZZ,
     DUCK,
-    PALINDROMIC
+    PALINDROMIC,
+    GAPFUL
 }

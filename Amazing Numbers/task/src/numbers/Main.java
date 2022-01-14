@@ -12,7 +12,8 @@ public class Main {
                 new OddNumberChecker(),
                 new BuzzNumberChecker(),
                 new DuckNumberChecker(),
-                new PalindromicNumberChecker());
+                new PalindromicNumberChecker(),
+                new GapfulNumberChecker());
 
         final var scanner = new Scanner(System.in);
 
@@ -29,9 +30,8 @@ public class Main {
             } catch (IllegalArgumentException iae) {
                 if ("0".equals(number)) {
                     break;
-                } else {
-                    System.out.println(iae.getMessage());
                 }
+                System.out.println(iae.getMessage());
             }
         }
 
