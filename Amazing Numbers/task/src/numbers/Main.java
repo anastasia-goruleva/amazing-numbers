@@ -26,7 +26,7 @@ public class Main {
             try {
                 errorCheckers.forEach(checker -> checker.throwException(number));
                 System.out.printf("Properties of %s\n", number);
-                propertyCheckers.forEach(checker -> checker.accept(number));
+                propertyCheckers.forEach(checker -> checker.print(number));
             } catch (IllegalArgumentException iae) {
                 if ("0".equals(number)) {
                     break;

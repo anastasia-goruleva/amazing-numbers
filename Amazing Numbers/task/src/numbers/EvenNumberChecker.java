@@ -6,11 +6,6 @@ public class EvenNumberChecker extends ParityChecker {
     }
 
     @Override
-    protected int arrayIndex(boolean yes) {
-        return 1 - booleanToInt(yes);
-    }
-
-    @Override
     public boolean test(String s) {
         return !isOdd(s);
     }
