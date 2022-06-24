@@ -1,12 +1,8 @@
 package numbers;
 
-public class BuzzNumberChecker extends NumberPropertyChecker {
+public class BuzzNumberChecker implements PropertyChecker {
     private static final int MAGIC_NUMBER = 7;
     private static final int DECIMAL_BASE = 10;
-
-    public BuzzNumberChecker() {
-        super(PropertyType.BUZZ);
-    }
 
     @Override
     public boolean test(String s) {

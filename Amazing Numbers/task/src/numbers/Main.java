@@ -7,17 +7,10 @@ public class Main {
     public static void main(String[] args) {
         final var errorCheckers = List.of(new NaturalNumberChecker());
 
-        final var propertyCheckers = List.of(
-                new EvenNumberChecker(),
-                new OddNumberChecker(),
-                new BuzzNumberChecker(),
-                new DuckNumberChecker(),
-                new PalindromicNumberChecker(),
-                new GapfulNumberChecker());
-
         final var scanner = new Scanner(System.in);
 
         welcomeUsers();
+        final var format = new LongFormat();
 
         while (true) {
             printInstructions();
@@ -25,8 +18,7 @@ public class Main {
             System.out.println();
             try {
                 errorCheckers.forEach(checker -> checker.throwException(number));
-                System.out.printf("Properties of %s\n", number);
-                propertyCheckers.forEach(checker -> checker.print(number));
+                format.display(number);
             } catch (IllegalArgumentException iae) {
                 if ("0".equals(number)) {
                     break;

@@ -1,11 +1,7 @@
 package numbers;
 
-public class GapfulNumberChecker extends NumberPropertyChecker {
+public class GapfulNumberChecker implements PropertyChecker {
     private static final int MINIMAL_LENGTH = 3;
-
-    public GapfulNumberChecker() {
-        super(PropertyType.GAPFUL);
-    }
 
     @Override
     public boolean test(String s) {
