@@ -1,4 +1,6 @@
-package numbers;
+package numbers.output;
+
+import numbers.properties.Property;
 
 import java.util.stream.Stream;
 

@@ -1,5 +1,7 @@
 package numbers;
 
+import numbers.output.LongFormat;
+
 import java.util.Scanner;
 
 public class Main {
