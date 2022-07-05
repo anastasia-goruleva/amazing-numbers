@@ -10,13 +10,13 @@ public enum Property {
 
     public static final Property[] ALL = values();
 
-    private final PropertyCheck checker;
+    private final PropertyCheck propertyCheck;
 
-    Property(PropertyCheck checker) {
-        this.checker = checker;
+    Property(PropertyCheck propertyCheck) {
+        this.propertyCheck = propertyCheck;
     }
 
-    public PropertyCheck getChecker() {
-        return checker;
+    public boolean check(long number) {
+        return propertyCheck.check(number);
     }
 }

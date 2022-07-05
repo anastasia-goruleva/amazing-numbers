@@ -7,10 +7,10 @@ import java.util.stream.Stream;
 
 public class ShortFormat implements OutputFormat {
     @Override
-    public void display(String number) {
+    public void display(long number) {
         System.out.printf("%s is %s\n", number,
                 Stream.of(Property.ALL)
-                        .filter(p -> p.getChecker().test(number))
+                        .filter(p -> p.check(number))
                         .map(Property::toString)
                         .collect(Collectors.joining(", "))
                         .toLowerCase());

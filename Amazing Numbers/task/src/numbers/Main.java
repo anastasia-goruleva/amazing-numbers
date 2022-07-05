@@ -16,7 +16,6 @@ public class Main {
             final var number = askRequest(scanner);
             System.out.println();
             try {
-                format.display(number);
             } catch (IllegalArgumentException iae) {
                 if ("0".equals(number)) {
                     break;

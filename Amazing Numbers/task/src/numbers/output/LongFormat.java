@@ -14,14 +14,14 @@ public class LongFormat implements OutputFormat {
     }
 
     @Override
-    public void display(String number) {
+    public void display(long number) {
         System.out.println("Properties of " + number);
         Stream.of(Property.ALL).forEach(p -> print(p, number));
     }
 
-    private void print(Property property, String number) {
+    private void print(Property property, long number) {
         System.out.printf(PROPERTY_OUTPUT_FORMAT,
                 property.toString().toLowerCase(),
-                property.getChecker().test(number));
+                property.check(number));
     }
 }
