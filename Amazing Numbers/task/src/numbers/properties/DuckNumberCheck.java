@@ -1,6 +1,6 @@
-package numbers;
+package numbers.properties;
 
-public class DuckNumberChecker implements PropertyChecker {
+public class DuckNumberCheck implements PropertyCheck {
     private static final char ZERO_CHARACTER = '0';
     private static final String PREFIX = String.format("^%c+", ZERO_CHARACTER);
 

@@ -1,6 +1,6 @@
-package numbers;
+package numbers.properties;
 
-public class BuzzNumberChecker implements PropertyChecker {
+public class BuzzNumberCheck implements PropertyCheck {
     private static final int MAGIC_NUMBER = 7;
     private static final int DECIMAL_BASE = 10;
 

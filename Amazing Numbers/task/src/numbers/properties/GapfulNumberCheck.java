@@ -1,6 +1,6 @@
-package numbers;
+package numbers.properties;
 
-public class GapfulNumberChecker implements PropertyChecker {
+public class GapfulNumberCheck implements PropertyCheck {
     private static final int MINIMAL_LENGTH = 3;
 
     @Override

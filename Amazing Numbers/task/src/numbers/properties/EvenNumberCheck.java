@@ -1,6 +1,6 @@
-package numbers;
+package numbers.properties;
 
-public class EvenNumberChecker extends ParityChecker {
+public class EvenNumberCheck extends ParityCheck {
     @Override
     public boolean test(String s) {
         return !isOdd(s);

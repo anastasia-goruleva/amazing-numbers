@@ -1,6 +1,6 @@
-package numbers;
+package numbers.properties;
 
-public abstract class ParityChecker implements PropertyChecker {
+public abstract class ParityCheck implements PropertyCheck {
     private static final String ODD_DIGITS = "13579";
 
     protected boolean isOdd(String s) {
