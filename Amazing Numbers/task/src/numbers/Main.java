@@ -1,12 +1,9 @@
 package numbers;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        final var errorCheckers = List.of(new NaturalNumberChecker());
-
         final var scanner = new Scanner(System.in);
 
         welcomeUsers();
@@ -17,7 +14,6 @@ public class Main {
             final var number = askRequest(scanner);
             System.out.println();
             try {
-                errorCheckers.forEach(checker -> checker.throwException(number));
                 format.display(number);
             } catch (IllegalArgumentException iae) {
                 if ("0".equals(number)) {
@@ -40,7 +36,7 @@ public class Main {
     }
 
     private static void printInstructions() {
-        final var requests = new String[] {
+        final var requests = new String[]{
                 "- enter a natural number to know its properties",
                 "- enter 0 to exit"
         };
