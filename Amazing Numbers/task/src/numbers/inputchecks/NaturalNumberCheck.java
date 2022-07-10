@@ -5,7 +5,7 @@ import numbers.states.InitialState;
 
 import java.util.Set;
 
-import static numbers.ValueContainer.Value;
+import static numbers.common.ValueContainer.Value;
 
 public class NaturalNumberCheck extends StateInputCheck {
     public NaturalNumberCheck() {

@@ -1,4 +1,4 @@
-package numbers.states;
+package numbers.common;
 
 import java.util.stream.LongStream;
 

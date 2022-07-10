@@ -1,5 +1,5 @@
 package numbers.states;
-import static numbers.ValueContainer.Value;
+import static numbers.common.ValueContainer.Value;
 
 public interface State {
     State getNextState(Value value);

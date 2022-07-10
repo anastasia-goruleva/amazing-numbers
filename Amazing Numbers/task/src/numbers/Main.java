@@ -15,7 +15,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import static numbers.ValueContainer.Value;
+import static numbers.common.ValueContainer.Value;
 
 public class Main {
     private static final List<String> INSTRUCTIONS = List.of(

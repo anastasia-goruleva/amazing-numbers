@@ -2,7 +2,7 @@ package numbers.states;
 
 import numbers.exceptions.NoUserInputException;
 
-import static numbers.ValueContainer.Value;
+import static numbers.common.ValueContainer.Value;
 
 public class InitialState implements State {
     @Override

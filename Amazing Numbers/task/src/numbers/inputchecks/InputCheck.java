@@ -1,6 +1,6 @@
 package numbers.inputchecks;
 
-import static numbers.ValueContainer.Value;
+import static numbers.common.ValueContainer.Value;
 
 public interface InputCheck {
     void check(Value value);

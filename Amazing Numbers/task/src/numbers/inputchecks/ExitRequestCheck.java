@@ -2,11 +2,10 @@ package numbers.inputchecks;
 
 import numbers.exceptions.ExitRequestException;
 import numbers.states.InitialState;
-import numbers.states.State;
 
 import java.util.Set;
 
-import static numbers.ValueContainer.Value;
+import static numbers.common.ValueContainer.Value;
 
 public class ExitRequestCheck extends StateInputCheck {
     public ExitRequestCheck() {

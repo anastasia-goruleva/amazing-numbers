@@ -1,4 +1,4 @@
-package numbers;
+package numbers.common;
 
 import java.util.function.Supplier;
 
