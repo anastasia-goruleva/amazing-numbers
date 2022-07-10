@@ -1,17 +1,18 @@
 package numbers.states;
 
 import numbers.exceptions.NoUserInputException;
+import numbers.output.OutputFormat;
 
 import static numbers.common.ValueContainer.Value;
 
 public class InitialState implements State {
     @Override
     public State getNextState(Value value) {
-        return null;
+        return new SingleState(value.get());
     }
 
     @Override
-    public void processData() {
+    public void processData(OutputFormat outputFormat) {
         throw new NoUserInputException();
     }
 }

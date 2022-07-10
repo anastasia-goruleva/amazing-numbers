@@ -14,7 +14,7 @@ public class LongFormat implements OutputFormat {
     }
 
     @Override
-    public void display(long number) {
+    public void accept(long number) {
         System.out.println("Properties of " + number);
         Stream.of(Property.ALL).forEach(p -> print(p, number));
     }

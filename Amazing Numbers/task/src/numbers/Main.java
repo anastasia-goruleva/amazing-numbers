@@ -52,7 +52,7 @@ public class Main {
                     currentState = currentState.getNextState(value);
                 }
 
-                currentState.processData();
+                currentState.processData(format);
             } catch (ExitRequestException e) {
                 break;
             } catch (NaturalNumberException e) {

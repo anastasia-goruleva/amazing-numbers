@@ -1,5 +1,6 @@
 package numbers.output;
 
-public interface OutputFormat {
-    void display(long number);
+import java.util.function.LongConsumer;
+
+public interface OutputFormat extends LongConsumer {
 }

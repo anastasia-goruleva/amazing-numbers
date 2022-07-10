@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class ShortFormat implements OutputFormat {
     @Override
-    public void display(long number) {
+    public void accept(long number) {
         System.out.printf("%s is %s\n", number,
                 Stream.of(Property.ALL)
                         .filter(p -> p.check(number))
