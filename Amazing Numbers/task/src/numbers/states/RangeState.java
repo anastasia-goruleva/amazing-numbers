@@ -1,9 +1,10 @@
 package numbers.states;
 
 import numbers.common.Range;
-import numbers.common.ValueContainer;
 import numbers.exceptions.UnexpectedInputException;
 import numbers.output.OutputFormat;
+
+import static numbers.common.ValueContainer.Value;
 
 public class RangeState implements State {
     private final Range range;
@@ -13,7 +14,7 @@ public class RangeState implements State {
     }
 
     @Override
-    public State getNextState(ValueContainer.Value value) {
+    public State getNextState(Value value) {
         throw new UnexpectedInputException();
     }
 
