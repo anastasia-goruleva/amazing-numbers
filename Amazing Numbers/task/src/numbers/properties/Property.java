@@ -6,7 +6,8 @@ public enum Property {
     BUZZ(new BuzzNumberCheck()),
     DUCK(new DuckNumberCheck()),
     PALINDROMIC(new PalindromicNumberCheck()),
-    GAPFUL(new GapfulNumberCheck());
+    GAPFUL(new GapfulNumberCheck()),
+    SPY(new SpyNumberCheck());
 
     public static final Property[] ALL = values();
 
