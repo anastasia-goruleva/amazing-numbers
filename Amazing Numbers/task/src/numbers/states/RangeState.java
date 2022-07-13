@@ -1,7 +1,6 @@
 package numbers.states;
 
 import numbers.common.Range;
-import numbers.exceptions.UnexpectedInputException;
 import numbers.output.OutputFormat;
 
 import static numbers.common.ValueContainer.Value;
@@ -15,7 +14,7 @@ public class RangeState implements State {
 
     @Override
     public State getNextState(Value value) {
-        throw new UnexpectedInputException();
+        return new PropertySearchState(range, value.get());
     }
 
     @Override
