@@ -5,6 +5,7 @@ import static numbers.common.ValueContainer.Value;
 import numbers.exceptions.NaturalNumberException;
 import numbers.inputchecks.ExitRequestCheck;
 import numbers.inputchecks.NaturalNumberCheck;
+import numbers.inputchecks.PropertyNameCheck;
 import numbers.inputchecks.StateInputCheck;
 import numbers.output.LongFormat;
 import numbers.output.OutputFormat;
@@ -22,7 +23,8 @@ import java.util.Scanner;
 public class InputProcessing {
     private static final List<StateInputCheck> INPUT_CHECKS = List.of(
             new ExitRequestCheck(),
-            new NaturalNumberCheck()
+            new NaturalNumberCheck(),
+            new PropertyNameCheck()
     );
 
     private static final Map<Class<? extends State>, String> ERROR_MESSAGES = Map.of(

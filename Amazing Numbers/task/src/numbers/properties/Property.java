@@ -1,5 +1,7 @@
 package numbers.properties;
 
+import java.util.stream.Stream;
+
 public enum Property {
     EVEN(new EvenNumberCheck()),
     ODD(new OddNumberCheck()),
@@ -19,5 +21,9 @@ public enum Property {
 
     public boolean check(long number) {
         return propertyCheck.check(number);
+    }
+
+    public static boolean exists(String propertyName) {
+        return Stream.of(ALL).map(Property::toString).anyMatch(propertyName::equalsIgnoreCase);
     }
 }
