@@ -13,6 +13,7 @@ public class Main {
             "- enter two natural numbers to obtain the properties of the list:",
             " * the first parameter represents a starting number;",
             " * the second parameter shows how many consecutive numbers are to be processed;",
+            "- two natural numbers and a property to search for;",
             "- separate the parameters with one space;",
             "- enter 0 to exit."
     );

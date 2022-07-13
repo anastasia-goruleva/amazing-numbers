@@ -1,10 +1,8 @@
 package numbers;
 
-import static numbers.common.ValueContainer.Value;
-
+import numbers.common.InputProvider;
 import numbers.exceptions.InputErrorException;
 import numbers.exceptions.NaturalNumberException;
-import numbers.exceptions.WrongPropertyNameException;
 import numbers.inputchecks.ExitRequestCheck;
 import numbers.inputchecks.NaturalNumberCheck;
 import numbers.inputchecks.PropertyNameCheck;
@@ -12,15 +10,14 @@ import numbers.inputchecks.StateInputCheck;
 import numbers.output.LongFormat;
 import numbers.output.OutputFormat;
 import numbers.output.ShortFormat;
-import numbers.states.InitialState;
-import numbers.states.RangeState;
-import numbers.states.SingleState;
-import numbers.states.State;
+import numbers.states.*;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
+import static numbers.common.ValueContainer.Value;
 
 public class InputProcessing {
     private static final List<StateInputCheck> INPUT_CHECKS = List.of(
@@ -34,9 +31,18 @@ public class InputProcessing {
             SingleState.class, "The second parameter should be a natural number."
     );
 
+    private static final OutputFormat RANGE_OUTPUT_FORMAT = new ShortFormat();
+
     private static final Map<Class<? extends State>, OutputFormat> NUMBER_FORMATS = Map.of(
             SingleState.class, new LongFormat(),
-            RangeState.class, new ShortFormat()
+            RangeState.class, RANGE_OUTPUT_FORMAT,
+            PropertySearchState.class, RANGE_OUTPUT_FORMAT
+    );
+
+    private static final Map<Class<? extends State>, InputProvider> INPUT_PROVIDERS = Map.of(
+            InitialState.class, InputProcessing::getIntegerInput,
+            SingleState.class, InputProcessing::getIntegerInput,
+            RangeState.class, scanner -> Value.of(scanner.next())
     );
 
     private final Scanner scanner;
@@ -51,7 +57,7 @@ public class InputProcessing {
         try {
             while (scanner.hasNext()) {
                 // read data
-                final var value = getIntegerInput(scanner);
+                final var value = getInput();
                 // check input
                 checkInput(value);
                 // go to next state
@@ -70,6 +76,10 @@ public class InputProcessing {
 
     private void throwInputError(String message, RuntimeException e) {
         throw new InputErrorException(message, e);
+    }
+
+    private Value getInput() {
+        return INPUT_PROVIDERS.get(state.getClass()).apply(scanner);
     }
 
     private static Value getIntegerInput(Scanner scanner) {
