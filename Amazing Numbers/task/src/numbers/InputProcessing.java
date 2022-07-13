@@ -2,7 +2,9 @@ package numbers;
 
 import static numbers.common.ValueContainer.Value;
 
+import numbers.exceptions.InputErrorException;
 import numbers.exceptions.NaturalNumberException;
+import numbers.exceptions.WrongPropertyNameException;
 import numbers.inputchecks.ExitRequestCheck;
 import numbers.inputchecks.NaturalNumberCheck;
 import numbers.inputchecks.PropertyNameCheck;
@@ -46,31 +48,35 @@ public class InputProcessing {
     }
 
     public void process() {
-        while (scanner.hasNext()) {
-            // read data
-            final var value = getIntegerInput();
-            // check input
-            checkInput(value);
-            // go to next state
-            state = state.getNextState(value);
-        }
+        try {
+            while (scanner.hasNext()) {
+                // read data
+                final var value = getIntegerInput(scanner);
+                // check input
+                checkInput(value);
+                // go to next state
+                state = state.getNextState(value);
+            }
 
-        state.processData(NUMBER_FORMATS.get(state.getClass()));
+            state.processData(NUMBER_FORMATS.get(state.getClass()));
+        } catch (NaturalNumberException e) {
+            throwInputError(ERROR_MESSAGES.get(state.getClass()), e);
+        }
     }
 
     private void checkInput(Value value) {
-        try {
-            INPUT_CHECKS.stream().filter(check -> check.isValidFor(state)).forEach(check -> check.check(value));
-        } catch (NaturalNumberException e) {
-            throw new NaturalNumberException(ERROR_MESSAGES.get(state.getClass()), e);
-        }
+        INPUT_CHECKS.stream().filter(check -> check.isValidFor(state)).forEach(check -> check.check(value));
     }
 
-    private Value getIntegerInput() {
+    private void throwInputError(String message, RuntimeException e) {
+        throw new InputErrorException(message, e);
+    }
+
+    private static Value getIntegerInput(Scanner scanner) {
         try {
             return Value.of(scanner.nextLong());
         } catch (InputMismatchException e) {
-            throw new NaturalNumberException(ERROR_MESSAGES.get(state.getClass()), e);
+            throw new NaturalNumberException(e);
         }
     }
 }

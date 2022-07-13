@@ -1,9 +1,7 @@
 package numbers;
 
 import numbers.exceptions.ExitRequestException;
-import numbers.exceptions.NaturalNumberException;
 import numbers.exceptions.NoUserInputException;
-import numbers.exceptions.UnexpectedInputException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -35,10 +33,10 @@ public class Main {
                 inputProcessing.process();
             } catch (ExitRequestException e) {
                 break;
-            } catch (NaturalNumberException | UnexpectedInputException e) {
-                System.out.println(e.getMessage());
             } catch (NoUserInputException e) {
                 printInstructions();
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
         }
 
