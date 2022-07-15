@@ -1,4 +1,4 @@
-package numbers.common;
+package numbers.states;
 
 import java.util.stream.LongStream;
 
@@ -20,7 +20,7 @@ public class Range {
     }
 
     public LongStream createStream() {
-        return LongStream.iterate(start, v -> ++v);
+        return LongStream.iterate(start, v -> v > 0, v -> ++v);
     }
 
     public LongStream getLimitedStream(LongStream stream) {

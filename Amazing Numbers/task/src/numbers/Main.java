@@ -14,6 +14,7 @@ public class Main {
             " * the first parameter represents a starting number;",
             " * the second parameter shows how many consecutive numbers are to be processed;",
             "- two natural numbers and a property to search for;",
+            "- two natural numbers and two properties to search for;",
             "- separate the parameters with one space;",
             "- enter 0 to exit."
     );

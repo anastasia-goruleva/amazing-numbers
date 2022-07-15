@@ -1,6 +1,5 @@
 package numbers.states;
 
-import numbers.common.Range;
 import numbers.output.OutputFormat;
 
 import static numbers.common.ValueContainer.Value;

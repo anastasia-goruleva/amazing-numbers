@@ -7,6 +7,7 @@ import numbers.properties.Property;
 import numbers.states.RangeState;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class PropertyNameCheck extends StateInputCheck {
     public PropertyNameCheck() {
@@ -15,9 +16,12 @@ public class PropertyNameCheck extends StateInputCheck {
 
     @Override
     public void check(Value value) {
-        final String propertyName = value.get();
-        if (!Property.exists(propertyName)) {
-            throw new WrongPropertyNameException(propertyName);
+        final var propertyNames = value.<Set<String>>get();
+        final var wrongNames = propertyNames.stream()
+                .filter(n -> !Property.exists(n))
+                .collect(Collectors.toList());
+        if (!wrongNames.isEmpty()) {
+            throw new WrongPropertyNameException(wrongNames);
         }
     }
 }

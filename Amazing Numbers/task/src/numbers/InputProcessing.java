@@ -12,10 +12,7 @@ import numbers.output.OutputFormat;
 import numbers.output.ShortFormat;
 import numbers.states.*;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 import static numbers.common.ValueContainer.Value;
 
@@ -42,7 +39,7 @@ public class InputProcessing {
     private static final Map<Class<? extends State>, InputProvider> INPUT_PROVIDERS = Map.of(
             InitialState.class, InputProcessing::getIntegerInput,
             SingleState.class, InputProcessing::getIntegerInput,
-            RangeState.class, scanner -> Value.of(scanner.next())
+            RangeState.class, InputProcessing::getProperties
     );
 
     private final Scanner scanner;
@@ -88,5 +85,10 @@ public class InputProcessing {
         } catch (InputMismatchException e) {
             throw new NaturalNumberException(e);
         }
+    }
+
+    private static Value getProperties(Scanner scanner) {
+        final var properties = scanner.nextLine().strip().toUpperCase().split("\\s+");
+        return Value.of(Set.of(properties));
     }
 }

@@ -1,19 +1,21 @@
 package numbers.states;
 
-import numbers.common.Range;
 import numbers.exceptions.UnexpectedInputException;
 import numbers.output.OutputFormat;
 import numbers.properties.Property;
+
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 import static numbers.common.ValueContainer.Value;
 
 public class PropertySearchState implements State {
     final Range range;
-    final Property property;
+    final Collection<Property> properties;
 
-    public PropertySearchState(Range range, String propertyName) {
+    public PropertySearchState(Range range, Collection<String> properties) {
         this.range = range;
-        this.property = Property.valueOf(propertyName.toUpperCase());
+        this.properties = properties.stream().map(Property::valueOf).collect(Collectors.toList());
     }
 
     @Override
@@ -23,7 +25,7 @@ public class PropertySearchState implements State {
 
     @Override
     public void processData(OutputFormat numberOutput) {
-        range.getLimitedStream(range.createStream().filter(property::check))
+        range.getLimitedStream(range.createStream().filter(v -> properties.stream().allMatch(p -> p.check(v))))
                 .forEach(numberOutput);
     }
 }
