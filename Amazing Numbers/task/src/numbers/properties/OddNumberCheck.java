@@ -1,8 +1,8 @@
 package numbers.properties;
 
-public class OddNumberCheck extends ParityCheck {
+public class OddNumberCheck implements PropertyCheck {
     @Override
     public boolean check(long number) {
-        return isOdd(number);
+        return ParityCheck.isOdd(number);
     }
 }

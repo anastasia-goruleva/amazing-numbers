@@ -2,7 +2,6 @@ package numbers.properties;
 
 public class BuzzNumberCheck implements PropertyCheck {
     private static final int MAGIC_NUMBER = 7;
-    private static final int DECIMAL_BASE = 10;
 
     @Override
     public boolean check(long number) {

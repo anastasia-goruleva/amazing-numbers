@@ -9,7 +9,9 @@ public enum Property {
     DUCK(new DuckNumberCheck()),
     PALINDROMIC(new PalindromicNumberCheck()),
     GAPFUL(new GapfulNumberCheck()),
-    SPY(new SpyNumberCheck());
+    SPY(new SpyNumberCheck()),
+    SUNNY(new SunnyNumberCheck()),
+    SQUARE(new SquareNumberCheck());
 
     public static final Property[] ALL = values();
 
