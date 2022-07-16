@@ -13,6 +13,8 @@ import numbers.output.ShortFormat;
 import numbers.states.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static numbers.common.ValueContainer.Value;
 
@@ -89,6 +91,6 @@ public class InputProcessing {
 
     private static Value getProperties(Scanner scanner) {
         final var properties = scanner.nextLine().strip().toUpperCase().split("\\s+");
-        return Value.of(Set.of(properties));
+        return Value.of(Stream.of(properties).collect(Collectors.toSet()));
     }
 }
