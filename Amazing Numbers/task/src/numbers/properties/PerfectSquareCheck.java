@@ -8,9 +8,8 @@ public class PerfectSquareCheck {
             return false;
         }
 
-        long product;
-        for (var i = 1L; (product = i * i) < n; ++i);
+        final var squareRoot = (long) Math.sqrt(n);
 
-        return product == n;
+        return squareRoot * squareRoot == n;
     }
 }
