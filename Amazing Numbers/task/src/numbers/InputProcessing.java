@@ -3,10 +3,7 @@ package numbers;
 import numbers.common.InputProvider;
 import numbers.exceptions.InputErrorException;
 import numbers.exceptions.NaturalNumberException;
-import numbers.inputchecks.ExitRequestCheck;
-import numbers.inputchecks.NaturalNumberCheck;
-import numbers.inputchecks.PropertyNameCheck;
-import numbers.inputchecks.StateInputCheck;
+import numbers.inputchecks.*;
 import numbers.output.LongFormat;
 import numbers.output.OutputFormat;
 import numbers.output.ShortFormat;
@@ -22,7 +19,8 @@ public class InputProcessing {
     private static final List<StateInputCheck> INPUT_CHECKS = List.of(
             new ExitRequestCheck(),
             new NaturalNumberCheck(),
-            new PropertyNameCheck()
+            new PropertyNameCheck(),
+            new MutuallyExclusivePropertiesCheck()
     );
 
     private static final Map<Class<? extends State>, String> ERROR_MESSAGES = Map.of(
