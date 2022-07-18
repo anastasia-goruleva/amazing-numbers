@@ -11,7 +11,8 @@ public enum Property {
     GAPFUL(new GapfulNumberCheck()),
     SPY(new SpyNumberCheck()),
     SUNNY(new SunnyNumberCheck()),
-    SQUARE(new SquareNumberCheck());
+    SQUARE(new SquareNumberCheck()),
+    JUMPING(new JumpingNumberCheck());
 
     public static final Property[] ALL = values();
 
