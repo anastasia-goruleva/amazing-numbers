@@ -12,7 +12,9 @@ public enum Property {
     SPY(new SpyNumberCheck()),
     SUNNY(new SunnyNumberCheck()),
     SQUARE(new SquareNumberCheck()),
-    JUMPING(new JumpingNumberCheck());
+    JUMPING(new JumpingNumberCheck()),
+    HAPPY(new HappyNumberCheck()),
+    SAD(new SadNumberCheck());
 
     public static final Property[] ALL = values();
 

@@ -15,7 +15,8 @@ public class MutuallyExclusivePropertiesCheck extends StateInputCheck {
     private static final List<MutuallyExclusivePair> propertyPairs = List.of(
             MutuallyExclusivePair.of(Property.EVEN, Property.ODD),
             MutuallyExclusivePair.of(Property.DUCK, Property.SPY),
-            MutuallyExclusivePair.of(Property.SUNNY, Property.SQUARE)
+            MutuallyExclusivePair.of(Property.SUNNY, Property.SQUARE),
+            MutuallyExclusivePair.of(Property.HAPPY, Property.SAD)
     );
 
     public MutuallyExclusivePropertiesCheck() {
