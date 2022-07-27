@@ -13,8 +13,8 @@ public class Main {
             "- enter two natural numbers to obtain the properties of the list:",
             " * the first parameter represents a starting number;",
             " * the second parameter shows how many consecutive numbers are to be processed;",
-            "- two natural numbers and a property to search for;",
             "- two natural numbers and properties to search for;",
+            "- a property preceded by minus must not be present in numbers;",
             "- separate the parameters with one space;",
             "- enter 0 to exit."
     );
@@ -47,7 +47,7 @@ public class Main {
 
     private static String askRequest(Scanner scanner) {
         System.out.print("\nEnter a request: ");
-        return scanner.nextLine();
+        return scanner.nextLine().toUpperCase();
     }
 
     private static void welcomeUsers() {

@@ -2,20 +2,22 @@ package numbers.states;
 
 import numbers.exceptions.UnexpectedInputException;
 import numbers.output.OutputFormat;
+import numbers.properties.InputPropertySet;
 import numbers.properties.Property;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import static numbers.common.ValueContainer.Value;
 
 public class PropertySearchState implements State {
-    final Range range;
-    final Collection<Property> properties;
+    private final Range range;
+    private final Collection<Property> presented;
+    private final Collection<Property> excluded;
 
-    public PropertySearchState(Range range, Collection<String> properties) {
+    public PropertySearchState(Range range, InputPropertySet inputProperties) {
         this.range = range;
-        this.properties = properties.stream().map(Property::valueOf).collect(Collectors.toList());
+        this.presented = inputProperties.getPresented();
+        this.excluded = inputProperties.getExcluded();
     }
 
     @Override
@@ -25,7 +27,12 @@ public class PropertySearchState implements State {
 
     @Override
     public void processData(OutputFormat numberOutput) {
-        range.getLimitedStream(range.createStream().filter(v -> properties.stream().allMatch(p -> p.check(v))))
+        range.getLimitedStream(range.createStream().filter(this::checkValue))
                 .forEach(numberOutput);
+    }
+
+    private boolean checkValue(long value) {
+        return presented.stream().allMatch(p -> p.check(value))
+                && excluded.stream().noneMatch(p -> p.check(value));
     }
 }

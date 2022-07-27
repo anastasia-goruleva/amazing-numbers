@@ -1,13 +1,14 @@
 package numbers.inputchecks;
 
-import static numbers.common.ValueContainer.Value;
-
 import numbers.exceptions.WrongPropertyNameException;
+import numbers.properties.InputPropertySet;
 import numbers.properties.Property;
 import numbers.states.RangeState;
 
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static numbers.common.ValueContainer.Value;
 
 public class PropertyNameCheck extends StateInputCheck {
     public PropertyNameCheck() {
@@ -16,10 +17,11 @@ public class PropertyNameCheck extends StateInputCheck {
 
     @Override
     public void check(Value value) {
-        final var propertyNames = value.<Set<String>>get();
-        final var wrongNames = propertyNames.stream()
+        final var inputProperties = value.<InputPropertySet>get();
+        final var wrongNames = inputProperties
+                .allPropertyNamesStream()
                 .filter(n -> !Property.exists(n))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         if (!wrongNames.isEmpty()) {
             throw new WrongPropertyNameException(wrongNames);
         }

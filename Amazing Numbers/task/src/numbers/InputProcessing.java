@@ -7,11 +7,10 @@ import numbers.inputchecks.*;
 import numbers.output.LongFormat;
 import numbers.output.OutputFormat;
 import numbers.output.ShortFormat;
+import numbers.properties.InputPropertySet;
 import numbers.states.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static numbers.common.ValueContainer.Value;
 
@@ -20,6 +19,7 @@ public class InputProcessing {
             new ExitRequestCheck(),
             new NaturalNumberCheck(),
             new PropertyNameCheck(),
+            new DirectOppositesCheck(),
             new MutuallyExclusivePropertiesCheck()
     );
 
@@ -41,6 +41,8 @@ public class InputProcessing {
             SingleState.class, InputProcessing::getIntegerInput,
             RangeState.class, InputProcessing::getProperties
     );
+
+    private static final char EXCLUDE_SIGN = '-';
 
     private final Scanner scanner;
     private State state;
@@ -88,7 +90,15 @@ public class InputProcessing {
     }
 
     private static Value getProperties(Scanner scanner) {
-        final var properties = scanner.nextLine().strip().toUpperCase().split("\\s+");
-        return Value.of(Stream.of(properties).collect(Collectors.toSet()));
+        final var presented = new HashSet<String>();
+        final var excluded = new HashSet<String>();
+        scanner.tokens().forEach(s -> {
+            if (s.charAt(0) == EXCLUDE_SIGN) {
+                excluded.add(s.substring(1));
+            } else {
+                presented.add(s);
+            }
+        });
+        return Value.of(new InputPropertySet(presented, excluded));
     }
 }
